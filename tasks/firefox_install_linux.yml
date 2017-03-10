@@ -5,7 +5,7 @@
 
 - name: firefox | Install dependencies
   apt: name="{{item}}" state="latest" update_cache="yes"
-  with_items: firefox_apt_deps.stdout_lines
+  with_items: "{{firefox_apt_deps.stdout_lines}}"
 
 - name: firefox | Extract archive
   command: tar -xjf "{{firefox_temp_dir.stdout}}/{{firefox_archive_name}}" chdir="{{firefox_temp_dir.stdout}}" creates="{{firefox_temp_dir.stdout}}/firefox"
